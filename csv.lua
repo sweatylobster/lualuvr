@@ -25,6 +25,7 @@ local function key_value_table(t)
 end
 
 local a = key_value_table(r)
+print(a.name)
 
 -- great. now let's get a string representation of the table to pass in on the command line and turn into a lua object (in another lua session.)
 -- but this is the X Y problem.
