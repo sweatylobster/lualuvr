@@ -3,12 +3,9 @@
 -- io.output(arg[1])
 local M = {}
 
-local mac = {"/Users/maxdehoyos/code/aguila"}
-local win = {"C:\\Users\\maxde\\code\\interpreting\\aguila"}
-
--- set these on windows for ez braindead cruising
-local aguila = os.getenv('AGUILA')
-local billing = os.getenv("BILLING")
+local preferences = require('preferences')
+local commands = require('commands')
+local capture = require('capture')
 
 local cmd = {
   gum = {
@@ -23,64 +20,6 @@ local cmd = {
 -- local schedule = assert(io.open(arg[1], 'r'))
 -- local lines = schedule:read("*all")
 -- schedule:close()
-
-
--- read the output of a command.
-function os.capture(command, raw)
-  local f = assert(io.popen(command, 'r'))
-  local s = assert(f:read("*all"))
-  f:close()
-  if raw then return s end
-  s = s:gsub('^%s+', '')
-  s = s:gsub('%s+$', '')
-  s = s:gsub('[\n\r]+', '')
-  return s
-end
-
--- sometimes we need a table instead of a string.
-function os.tab_cap(command)
-  local a = {}
-  local f = assert(io.popen(command, 'r'))
-  assert(f:lines('a'))
-  for l in f:lines() do
-    table.insert(a, l)
-  end
-  return a
-end
-
-local function get_csv_fields(csv_line)
-  local t = {}
-  for i in string.gmatch(csv_line, ",?([%d%-/%a%s]+)") do
-    table.insert(t, i)
-  end
-  return t
-end
-
--- turn it into a table
-local function csv_to_table(csv_line)
-  local a = {}
-  local keys = {'line', 'name', 'dob', 'doctor', 'dos'}
-  local fields = get_csv_fields(csv_line)
-  for i, x in ipairs(fields) do
-    if i == 1 then end
-    a[keys[i]] = x
-  end
-  return a
-end
-
-
--- this is so fkn jank lmao
-local function csv_to_string(csv_line)
-  local a = {}
-  table.insert(a, "{ ")
-  local keys = {'line', 'name', 'dob', 'doctor', 'dos'}
-  local fields = get_csv_fields(csv_line)
-  for i, v in ipairs(fields) do
-    table.insert(a, keys[i] .. "=" .. '"' .. v .. '"' .. ',')
-  end
-  table.insert(a, " }")
-  return table.concat(a)
-end
 
 
 -- https://www.lua.org/pil/21.2.html

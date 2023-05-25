@@ -1,18 +1,19 @@
-local csv = require('thecsv')
+local csv = require('csv')
+local commands = require('commands')
+local capture = require('capture')
+local prefs = require('preferences')
+local ps = require('ps')
 
-local fzf = "bat /Users/maxde/code/interpreting/aguila/billing/05-20-2023-copy.csv -p -f | fzf --reverse --prompt='monstrous' --ansi --margin=2 --padding=2 --header-lines=1 --no-multi"
+-- bat default file into fzf with default options
+local myfzf = commands.bat .. " | " .. commands.fzf
 
-local function capture(cmd, raw)
-  local choice = assert(io.popen(cmd, 'r'))
-  local s = assert(choice:read("*all"))
-  choice:close()
-  if raw then return s end
-  s = s:gsub('^%s+', '')
-  s = s:gsub('%s+$', '')
-  s = s:gsub('[\n\r]+', '')
-  return s
-end
+-- local choice = capture.to_string(myfzf)
 
-local choice = capture(fzf)
-print("This is coming from in Lua", choice)
-print(csv.CsvToString(choice))
+-- local choice = commands.bat_to_fzf(prefs.path_to_test_file)
+--
+local choice = "4,Max de Hoyos,04-02-1995,Mehrdad Shademan,05-23-2023"
+
+-- local entry = csv.to_table(choice)
+
+-- print(entry.name, entry.dos, entry.doctor)
+os.execute('lualatex attempt.tex --jobname="WOWZA" ' .. choice)

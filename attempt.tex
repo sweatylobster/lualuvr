@@ -1,0 +1,47 @@
+\documentclass{article}
+\usepackage{luacode}
+
+\begin{document}
+\begin{luacode}
+
+-- require 'adjust_date'
+-- LatexSuffixedDate()
+
+local csv = require('csv')
+local date = require('adjust_date')
+local a = csv.to_table(arg[#arg])
+
+-- FIX: keys are remaining but values are not???
+--NOTE: A really silly workaround is to do this:-->                                              *  *
+-- fzf --ansi --reverse --etc --bind ctrl-l:execute("lualatex attempt.tex --jobname='beast-mode' '{}'")
+-- i.e., '{}'", which makes this next line work.
+print(arg[#arg])
+-- now to draw silly pictures and make a custom preview command.
+-- --preview="awk -F ',' {} '{print $2}' | xargs lua -e print('' .. '.png') | chafa --settings"
+-- but obviously we do the whole thing in lua cause it's fucking awesome
+-- --preview=("lua displayer.lua {}") which does something like the above but *more* like something that **works**
+
+print(a.name)
+print(a.dob)
+print(a.doctor)
+print(a.dos)
+
+
+tex.print("Name:", a.name)
+tex.print("DOB:", a.dob)
+tex.print("Doctor:", a.doctor)
+tex.print("DOS:", a.dos)
+tex.print(date.Overt(a.dos))
+
+\end{luacode}
+
+\newcommand{\GetName}{
+	\directlua{
+		ps = require 'ps'
+		patient = ps.parse_clargs()
+		tex.print(patient.name)}
+	}
+\GetName
+
+
+\end{document}
