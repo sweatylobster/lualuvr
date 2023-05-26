@@ -1,5 +1,7 @@
 local cmd = require('commands')
-local prefs = require('preferences')
-local capture = require('capture')
 
-cmd.gum_today()
+local date = cmd.gum_today()
+
+local choice = cmd.bat_to_fzf(date)
+
+print(choice)

@@ -10,33 +10,37 @@ return {
   gum = {
     today = 'gum input --placeholder="You wanna print a lien from today\'s schedule?"',
     past = 'gum input --header="Which day do you wanna print a lien for, then?"',
-  schedule = 'python ' .. prefs.billing_path ..  'get_schedule.py',
+  schedule = prefs.py_interpreter .. prefs.billing_path ..  'get_schedule.py',
   },
+
   bat_to_fzf = function (file)
     local a = {
       "bat -p -f " .. file,
-      'fzf --reverse --prompt="commands.lua baby > " --ansi --header-lines=1'
+      'fzf --reverse --prompt="commands.lua +18 baby > " --ansi --header-lines=1 --header="Press CTRL-L for alien. The patient\'s alien."'
     }
     local bat_pipe = table.concat(a, " | ")
     return capture.to_string(bat_pipe)
   end,
+
   -- Use fd to return a list of .csv files in a given directory.
   fd_csv = function(directory)
     local dir = directory or prefs.billing_path
     local fd = 'fd -t f .csv -d 1 --search-path=' .. dir
     return capture.to_string(fd)
   end,
+
   fd_file = function(f, dir)
     local cmd = {"fd -t ", f, "-d 1", '--search-path=', dir}
     local query = table.concat(cmd)
     return capture.to_string(query)
   end,
+
   gum_today = function ()
     local day = capture.to_string('gum choose "yes" "no" --header="You wanna use today\'s schedule?"')
     if day == 'yes' then
       local path = prefs.billing_path .. os.date("%m-%d-%Y") .. '.csv'
-      local file = assert(io.input(path))
-      return file
+      assert(io.input(path), "It appears we don't have the schedule for today.")
+      return path
     elseif day == 'no' then
       -- get back a table of csv candidates
       local candidates = capture.to_table('fd -t f csv -d 1 --search-path=' .. prefs.billing_path)
@@ -45,11 +49,20 @@ return {
       return file
     end
   end,
+
   get_schedule = function ()
-    return os.execute("python " .. prefs.billing_path .. 'get_schedule.py')
+    return os.execute(prefs.py_interpreter .. prefs.billing_path .. 'get_schedule.py')
   end,
+
   latex = function (table_as_string)
-    local result = io.popen('python '.. prefs.luaforms_path .. 'pylualatex.py ' .. table_as_string , 'r')
+    local result = io.popen(prefs.py_interpreter.. prefs.luaforms_path .. 'pylualatex.py ' .. table_as_string , 'r')
     return result
-  end
+  end,
+
+  pylualatex = function(csv_line)
+    local args = {prefs.py_interpreter, prefs.luaforms_path .. 'pylualatex.py', csv_line}
+    local result = table.concat(args, " ")
+    local lien = io.popen()
+    return lien
+  end,
 }
