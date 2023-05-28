@@ -1,5 +1,6 @@
 local prefs = require('preferences')
 local capture = require('capture')
+local csv = require('csv')
 return {
   -- we can eventually turn these into bat_opts for customizability, but i want proof of concept now.
   bat = "bat -p -f " .. prefs.path_to_test_file,
@@ -59,10 +60,22 @@ return {
     return result
   end,
 
-  pylualatex = function(csv_line)
-    local args = {prefs.py_interpreter, prefs.luaforms_path .. 'pylualatex.py', csv_line}
+  -- Compile a lualatex document for a patient.
+  tex = function (choice)
+    local function surround(s, char)
+      return char .. s .. char
+    end
+    local patient = csv.to_table(choice)
+    local args = {
+      'lualatex',
+      '--jobname=' .. surround(patient.name, '"'),
+      '--output-directory=' .. prefs.output_directory,
+      '/Users/maxdehoyos/lualuvr/tex/' .. 'attempt.tex',
+      surround(choice, '"'),
+    }
     local result = table.concat(args, " ")
-    local lien = io.popen()
-    return lien
-  end,
+    -- 'lualatex attempt.tex --jobname="WOWZA" ' .. surround(choice, "'")
+    os.execute(result)
+  end
+
 }
