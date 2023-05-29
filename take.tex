@@ -1,0 +1,22 @@
+\documentclass{article}
+\usepackage{luacode}
+
+\begin{document}
+\begin{luacode}
+
+local csv = require('csv')
+local date = require('adjust_date')
+
+\newcommand{\Name}{csv.to_table(arg[#arg]).name}
+\newcommand{\Dob}{csv.to_table(arg[#arg]).dob}
+\newcommand{\Doctor}{csv.to_table(arg[#arg]).doctor}
+\newcommand{\Dos}{csv.to_table(arg[#arg]).dos}
+
+tex.print("Name:", \Name)
+tex.print("DOB:", \Dob)
+tex.print("Doctor:", \Doctor)
+tex.print("DOS:", \Dos)
+tex.print(date.Overt(\Dos))
+
+\end{luacode}
+\end{document}

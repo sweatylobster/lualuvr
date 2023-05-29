@@ -1,0 +1,176 @@
+\documentclass[paper=a4,fontsize=11pt,top=.2in]{article} % KOMA-article class : scrartcl
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[protrusion=true,expansion=true]{microtype}
+\usepackage{amsmath,amsfonts,amsthm}		% Math packages
+\usepackage{graphicx}				% Enable pdflatex
+\usepackage{tabularx,array}
+\usepackage[svgnames]{xcolor}			% Colors by their 'svgnames'
+\usepackage[top=.2in]{geometry}
+	\textheight=1200px			% Saving trees ;-)
+\usepackage{url}
+\usepackage{luacode}
+
+\frenchspacing					% Better looking spacings after periods
+\pagestyle{empty}				% No pagenumbers/headers/footers
+
+%%% Custom sectioning (sectsty package)
+%%% ------------------------------------------------------------
+\usepackage{sectsty}
+\sectionfont{%					% Change font of \section command
+	\usefont{OT1}{phv}{b}{n}%		% bch-b-n: CharterBT-Bold font
+	\sectionrule{0pt}{0pt}{-5pt}{2pt}}
+
+%%% Macros%%% ------------------------------------------------------------
+\newlength{\spacebox}
+\settowidth{\spacebox}{8888888888}		% Box to align text
+\newcommand{\sepspace}{\vspace*{1em}}		% Vertical space macro
+
+\newcommand{\CompanyName}[1]{
+	\Huge \usefont{OT1}{phv}{b}{n} \hfill \begin{center} #1 \end{center}
+	\par \normalsize \normalfont}
+
+\newcommand{\FormType}[1]{
+	\large \usefont{OT1}{phv}{m}{n}\hfill \begin{center} \textit{#1} \end{center}
+	\par \normalsize \normalfont}
+
+\newcommand*\GetDos{\luadirect(tb = require('ps').parse_clargs(); require('adjust_date').Overt(tb.dos))}
+
+\newcommand{\Date}{
+	\usefont{OT1}{phv}{m}{n}\hfill 
+	\begin{center} 
+	\luadirect{
+		local date = require('adjust_date')
+		local ps = require('ps')
+		local tb = ps.parse_clargs()
+		local dos = tb.dos
+		tex.print(date.Overt(dos))
+	}
+	\end{center}
+	\par \normalsize \normalfont}
+
+
+\newcommand{\GetName}{
+	\directlua{
+		ps = require 'ps'
+		patient = ps.parse_clargs()
+		tex.print(patient.name)}
+	}
+
+\newcommand{\GetDob}{
+	\directlua{
+		ps = require 'ps'
+		patient = ps.parse_clargs()
+		tex.print(patient.dob)}
+	}
+
+\newcommand{\GetDoctor}{
+	\directlua{
+		ps = require 'ps'
+		patient = ps.parse_clargs()
+		tex.print(patient.doctor)}
+	}
+
+\newcommand{\NewPart}[1]{\section*{\uppercase{#1}}}
+
+\newcommand{\RuledPatientDataEntry}[1]{
+	\vspace{1em}
+	\noindent\hangindent=2em\hangafter=0	% Indentation
+	\parbox{\spacebox}{			% Box to align text
+	\textbf{#1}}				% Key (birth, address, etc.)
+	%\hspace{1.5em}\noindent\rule{12cm}{0.14pt} \par % Simply shifting to the right, more centered
+	\noindent\rule{5cm}{0.14pt}		% Line for writing values shifted to the left
+	\vspace{1em}}
+
+\newcommand{\DataEntry}[2]{
+	\vspace{1em}
+	\noindent\hangindent=2em\hangafter=0	% Indentation
+	\parbox{\spacebox}{			% Box to align text
+	\textbf{#1}}				% Key (birth, address, etc.)
+\text{{#2}}}
+
+\newcommand{\Statement}[1]{
+	\noindent\hangindent=2em\hangafter=0 {#1} % The patient's or physician's statement		
+	\normalsize \par}
+
+\newcommand{\InterpreterStatement}{
+	\noindent\hangindent=2em\hangafter=0 \textbf{I attest that I am qualified to render the speech of both parties unequivocally according to professional standards set forth by the Commission for Certification of Healthcare Interpreters.}
+	\normalsize \par
+}
+
+\newcommand{\SignatureLine}[1]{
+{#1}{\noindent\rule{9.7cm}{0.4pt}}}	% Big line for signing
+
+\newcommand{\CenteredSignatureLine}{
+	\begin{center}
+	    {\noindent\rule{12cm}{0.4pt}}	% Bigger line for signinger
+	\end{center}}
+
+\newcommand{\WhoIsSigning}[1]{
+	\begin{center}
+		\textit{#1}			% Says this, in italics, in middle of page
+	\end{center}}			% To be used under signature
+
+\newcommand{\LuaDoctorSignature}{
+	\begin{center}
+		\textit{\directlua{tex.print(arg[4])}}			% Says this, in italics, in middle of page
+	\end{center}}			% To be used under signature
+
+% from tabularx documentation
+% god the neighbors, man
+\newcolumntype{Y}{>{\Large\centering\arraybackslash}X}
+
+%%% Begin Document
+%%% ------------------------------------------------------------
+\begin{document}
+
+% you can upload a photo and include it here...
+%\begin{wrapfigure}{l}{0.5\textwidth}
+%	\vspace*{-2em}
+% 		\includegraphics[width=0.15\textwidth]{photo}
+%\end{wrapfigure}
+\CompanyName{Topflight Interpreting}
+\Date
+
+%%% --------------------------------------------------------------------------
+%%%				Patient section
+%%% --------------------------------------------------------------------------
+\NewPart{Patient Data \& Request}{}
+\vspace{1.4em}
+\vspace{2em}
+\begin{center}
+\begin{tabularx}{0.8\textwidth}{|| Y | Y ||}
+	\hline
+	\large \textit{Patient name} & \large\textit{DOB} \\
+	\hline
+	\hline
+	\textbf{\GetName} & \textbf{\GetDob} \\
+	\hline
+\end{tabularx}
+\end{center}
+\normalsize
+\vspace{1.4em}
+
+% TODO: Eventually this'll be an image of the patient's signature collected via drawing pad and usb thing
+\vspace{3.5em}
+\CenteredSignatureLine
+\WhoIsSigning{Patient signature}
+%%% --------------------------------------------------------------------------
+%%%				Interpreter section
+%%% --------------------------------------------------------------------------
+\NewPart{Interpreter}
+\vspace{6em}
+\CenteredSignatureLine
+\WhoIsSigning{Interpreter name, signature, certification number}
+\vspace{1.62em}
+%%% --------------------------------------------------------------------------
+%%%				Physician section
+%%% --------------------------------------------------------------------------
+
+% TODO: Input image of doctor's signature.
+\NewPart{Provider}
+\vspace{6em}
+\CenteredSignatureLine
+% \LuaDoctorSignature
+\WhoIsSigning{\GetDoctor}
+\end{document}
