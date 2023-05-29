@@ -70,11 +70,11 @@ return {
       'lualatex',
       '--jobname=' .. surround(patient.name, '"'),
       '--output-directory=' .. prefs.output_directory,
-      '/Users/maxdehoyos/lualuvr/tex/' .. 'attempt.tex',
-      surround(choice, '"'),
+      '/Users/maxdehoyos/lualuvr/' .. 'test.tex',
+      surround(csv.to_string(choice), "'"),
     }
     local result = table.concat(args, " ")
-    -- 'lualatex attempt.tex --jobname="WOWZA" ' .. surround(choice, "'")
+    -- print(result)
     os.execute(result)
   end
 

@@ -21,7 +21,7 @@ function M.to_table(csv_line)
 end
 
 
-function M.repr(csv_line)
+function M.to_string(csv_line)
   local a = {}
   table.insert(a, "{ ")
   local keys = {'line', 'name', 'dob', 'doctor', 'dos'}
@@ -31,7 +31,8 @@ function M.repr(csv_line)
   end
   table.insert(a, " }")
   local s = table.concat(a)
-  return s:gsub(", }", ' }')
+  s = s:gsub(", }", ' }')
+  return s
 end
 
 return M
