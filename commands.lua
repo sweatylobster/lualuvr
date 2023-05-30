@@ -22,7 +22,7 @@ return {
   bat_to_fzf = function (file)
     local a = {
       "bat -p -f " .. file,
-      'fzf --reverse --prompt="commands.lua +18 baby > " --ansi --header-lines=1 --header="Press CTRL-L for alien. The patient\'s alien."'
+      'fzf --reverse --prompt="commands.lua +25 baby > " --ansi --header-lines=1 --header="Press CTRL-L for alien. The patient\'s alien."'
     }
     local bat_pipe = table.concat(a, " | ")
     return capture.to_string(bat_pipe)
