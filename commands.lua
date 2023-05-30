@@ -1,6 +1,11 @@
 local prefs = require('preferences')
 local capture = require('capture')
 local csv = require('csv')
+
+local function surround(s, char)
+  return char .. s .. char
+end
+
 return {
   -- we can eventually turn these into bat_opts for customizability, but i want proof of concept now.
   bat = "bat -p -f " .. prefs.path_to_test_file,
@@ -62,9 +67,6 @@ return {
 
   -- Compile a lualatex document for a patient.
   tex = function (choice)
-    local function surround(s, char)
-      return char .. s .. char
-    end
     local patient = csv.to_table(choice)
     local args = {
       'lualatex',
@@ -80,6 +82,19 @@ return {
     local exit = status:match("Output written on .+%.pdf")
     print(exit)
     return exit
+  end,
+
+  sed = function (line, file)
+    local a = csv.to_table(line)
+    line = a.line
+    print(line)
+    local args = {
+      'sed',
+      surround(line .. 'd', '"'),
+      file,
+    }
+    local sed_cmd = table.concat(args, " ")
+    os.execute(sed_cmd)
   end
 
 }
