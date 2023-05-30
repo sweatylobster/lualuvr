@@ -70,7 +70,7 @@ return {
       'lualatex',
       '--jobname=' .. surround(patient.name, '"'),
       '--output-directory=' .. prefs.output_directory,
-      '/Users/maxdehoyos/lualuvr/' .. 'test.tex',
+      prefs.tex_path .. 'test.tex',
       surround(csv.to_string(choice), "'"),
     }
     local result = table.concat(args, " ")
