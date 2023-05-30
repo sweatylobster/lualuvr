@@ -6,4 +6,4 @@ local choice = cmd.bat_to_fzf(date)
 
 print(choice)
 
-cmd.latex(choice)
+-- cmd.latex(choice)

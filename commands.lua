@@ -75,7 +75,11 @@ return {
     }
     local result = table.concat(args, " ")
     -- print(result)
-    os.execute(result)
+    local output = assert(io.popen(result, 'r'))
+    local status = output:read("*a")
+    local exit = status:match("Output written on .+%.pdf")
+    print(exit)
+    return exit
   end
 
 }
