@@ -1,23 +1,39 @@
 local prefs = require('preferences')
 local capture = require('capture')
 local csv = require('csv')
+
+local function surround(s, char)
+  return char .. s .. char
+end
+
 return {
   -- we can eventually turn these into bat_opts for customizability, but i want proof of concept now.
-  bat = "bat -p -f " .. prefs.path_to_test_file,
-  fzf = 'fzf --reverse --prompt="monstrous use of lua bro > " --ansi --margin=2 --padding=2 --header-lines=1 --no-multi',
-  fd = {
-    csv = 'fd -t f .csv -d 1 --search-path=' .. prefs.billing_path
-  },
+  -- bat = "bat -p -f " .. prefs.path_to_test_file,
+  -- fzf = 'fzf --reverse --prompt="monstrous use of lua bro > " --ansi --margin=2 --padding=2 --header-lines=1 --no-multi',
+  -- fd = {
+  --   csv = 'fd -t f .csv -d 1 --search-path=' .. prefs.billing_path
+  -- },
   gum = {
+    choose = function (choices, options)
+      assert(type(choices) == "table", "choices must be a table.")
+      -- this allows for spaces in the choices
+      for i = 1, #choices do
+        choices[i] = surround(choices[i], '"')
+      end
+      local args = table.concat(choices, " ")
+      local selection = capture.to_table(string.format("gum choose %s %s", args, options))
+      return selection
+    end,
     today = 'gum input --placeholder="You wanna print a lien from today\'s schedule?"',
     past = 'gum input --header="Which day do you wanna print a lien for, then?"',
   schedule = prefs.py_interpreter .. prefs.billing_path ..  'get_schedule.py',
   },
 
-  bat_to_fzf = function (file)
+  bat_to_fzf = function (file, fzf_opts)
+    fzf_opts = fzf_opts or ""
     local a = {
       "bat -p -f " .. file,
-      'fzf --reverse --prompt="commands.lua +18 baby > " --ansi --header-lines=1 --header="Press CTRL-L for alien. The patient\'s alien."'
+      'fzf --reverse --prompt="commands.lua +35 baby > " --ansi --header-lines=1 ' .. fzf_opts
     }
     local bat_pipe = table.concat(a, " | ")
     return capture.to_string(bat_pipe)
@@ -62,9 +78,6 @@ return {
 
   -- Compile a lualatex document for a patient.
   tex = function (choice)
-    local function surround(s, char)
-      return char .. s .. char
-    end
     local patient = csv.to_table(choice)
     local args = {
       'lualatex',
@@ -76,6 +89,5 @@ return {
     local result = table.concat(args, " ")
     -- print(result)
     os.execute(result)
-  end
-
+  end,
 }

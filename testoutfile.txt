@@ -1,0 +1,167 @@
+This is LuaHBTeX, Version 1.16.1 (MiKTeX 23.4 Portable)
+ restricted system commands enabled.
+(C:/Users/maxde/code/interpreting/aguila/forms/luaforms/test.tex
+LaTeX2e <2022-11-01> patch level 1
+ L3 programming layer <2023-03-30>
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/latex/base/article
+.cls
+Document Class: article 2022/07/02 v1.4n Standard LaTeX document class
+
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/latex/base/size10.
+clo))
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/generic/babel/babe
+l.sty
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/generic/babel/luab
+abel.def)
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/generic/babel/luab
+abel.def)
+*************************************
+* Local config file bblopts.cfg used
+*
+
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/latex/arabi/bblopt
+s.cfg)
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/latex/babel-englis
+h/english.ldf))
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/generic/babel/loca
+le/en/babel-english.tex)
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/latex/base/inputen
+c.sty
+
+Package inputenc Warning: inputenc package ignored with utf8 based engines.
+
+)
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/latex/microtype/mi
+crotype.sty
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/latex/graphics/key
+val.sty)
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/latex/etoolbox/eto
+olbox.sty)
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/latex/microtype/mi
+crotype-luatex.def)
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/latex/microtype/mi
+crotype.cfg))
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/latex/amsmath/amsm
+ath.sty
+For additional information on amsmath, use the `?' option.
+
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/latex/amsmath/amst
+ext.sty
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/latex/amsmath/amsg
+en.sty))
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/latex/amsmath/amsb
+sy.sty)
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/latex/amsmath/amso
+pn.sty))
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/latex/amsfonts/ams
+fonts.sty)
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/latex/amscls/amsth
+m.sty)
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/latex/graphics/gra
+phicx.sty
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/latex/graphics/gra
+phics.sty
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/latex/graphics/tri
+g.sty)
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/latex/graphics-cfg
+/graphics.cfg)
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/latex/graphics-def
+/luatex.def)))
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/latex/tools/tabula
+rx.sty
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/latex/tools/array.
+sty))
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/latex/xcolor/xcolo
+r.sty
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/latex/graphics-cfg
+/color.cfg)
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/latex/graphics/mat
+hcolor.ltx)
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/latex/xcolor/svgna
+m.def))
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/latex/geometry/geo
+metry.sty
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/generic/iftex/ifvt
+ex.sty
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/generic/iftex/ifte
+x.sty))
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/latex/geometry/geo
+metry.cfg))
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/latex/url/url.sty)
+
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/lualatex/luacode/l
+uacode.sty
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/generic/iftex/iflu
+atex.sty)
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/luatex/luatexbase/
+luatexbase.sty
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/luatex/ctablestack
+/ctablestack.sty)))
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/latex/sectsty/sect
+sty.sty
+
+LaTeX Warning: Command \underbar  has changed.
+               Check if current package is valid.
+
+
+LaTeX Warning: Command \underline  has changed.
+               Check if current package is valid.
+
+)
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/latex/l3backend/l3
+backend-luatex.def)
+
+LaTeX Warning: Unused global option(s):
+    [paper,fontsize,top].
+
+
+("C:/Users/maxde/code/interpreting/aguila/forms/doctors/Shademan/05-01-2023/Dat
+e of Service Ugliness Check.aux")
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/latex/base/ts1cmr.
+fd)
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/latex/microtype/mt
+-LatinModernRoman.cfg)
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/context/base/mkii/
+supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+)
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/latex/epstopdf-pkg
+/epstopdf-base.sty
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/latex/00miktex/eps
+topdf-sys.cfg))
+*geometry* driver: auto-detecting
+*geometry* detected driver: luatex
+
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/latex/psnfss/ot1ph
+v.fd)Sunday, April 2nd, 1995
+covert:	Sunday, April 2nd, 1995
+overt:	Sunday, April 2nd, 1995
+
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/latex/microtype/mt
+-cmr.cfg)
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/latex/amsfonts/ums
+a.fd)
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/latex/microtype/mt
+-msa.cfg)
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/latex/amsfonts/ums
+b.fd)
+(C:/Users/maxde/scoop/apps/miktex/current/texmfs/install/tex/latex/microtype/mt
+-msb.cfg) [1{C:/Users/maxde/scoop/apps/miktex/current/texmfs/data/fonts/map/pdf
+tex/pdftex.map}]
+("C:/Users/maxde/code/interpreting/aguila/forms/doctors/Shademan/05-01-2023/Dat
+e of Service Ugliness Check.aux"))
+ 610 words of node memory still in use:
+   7 hlist, 2 vlist, 2 rule, 1 local_par, 5 glue, 5 kern, 1 penalty, 1 margin_k
+ern, 4 glyph, 18 attribute, 57 glue_spec, 10 attribute_list, 1 write nodes
+   avail lists: 2:527,3:120,4:56,5:110,6:40,7:1474,8:1,9:240,10:5,11:92
+<//?/c:/users/maxde/scoop/apps/miktex/current/texmfs/install/fonts/opentype/pub
+lic/lm/lmroman12-bold.otf><//?/c:/users/maxde/scoop/apps/miktex/current/texmfs/
+install/fonts/opentype/public/lm/lmroman12-italic.otf><//?/c:/users/maxde/scoop
+/apps/miktex/current/texmfs/install/fonts/opentype/public/lm/lmroman10-italic.o
+tf><//?/c:/users/maxde/scoop/apps/miktex/current/texmfs/install/fonts/opentype/
+public/lm/lmroman10-bold.otf>{C:/Users/maxde/scoop/apps/miktex/current/texmfs/i
+nstall/fonts/enc/dvips/base/8r.enc}<C:/Users/maxde/scoop/apps/miktex/current/te
+xmfs/install/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Users/maxde/scoop/apps/mik
+tex/current/texmfs/install/fonts/type1/urw/helvetic/uhvr8a.pfb>
+Output written on Date of Service Ugliness Check.pdf (1 page, 34026 bytes).
+Transcript written on "Date of Service Ugliness Check.log".

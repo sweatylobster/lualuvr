@@ -1,3 +1,15 @@
+# CUT TO THE CHASE
+
+The chief modules are:
+- capture.lua
+- preferences.lua
+- csv.lua
+
+So that:
+- commands.lua
+can be pleasant syntactic sugar.
+
+
 # Whowhowwhowho
 
 This started out as a repo for learning Lua.
