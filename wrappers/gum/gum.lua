@@ -1,3 +1,5 @@
+M = {}
+
 local function surround(s, char)
   return char .. s .. char
 end
@@ -39,7 +41,7 @@ end
 
 -- print(parse_opts({header="none", "no-limit"}))
 
-local gum = {
+M = {
   choose = function (choices, opts)
     local a = {}
     local cmd = table.concat({"gum choose", parse_choices(choices), parse_opts(opts)}, " ")
@@ -55,10 +57,4 @@ local gum = {
   end,
 }
 
-local div = gum.choose({"cow", "devil"}, {header="divinity", "--no-limit"})
-
-for i, v in ipairs(div) do
-  print(i, v)
-end
-
-gum.spin("lualatex /Users/maxdehoyos/code/aguila/forms/luaforms/cowabunga.tex", {title="YEEHAW"})
+return M
